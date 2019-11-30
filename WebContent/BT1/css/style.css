@@ -1,0 +1,62 @@
+.wrapper {
+	width: 500px;
+	margin: 10px auto;
+	background: #C7EEEB;
+}
+
+h2 {
+	padding: 10px;
+	font-weight: bold;
+	font-size: 30px;
+	background-color: #00A19C;
+}
+
+form {
+	padding: 10px;
+}
+
+label {
+	width: 100px;
+	float: left;
+}
+
+a {
+	padding: 10px;
+	font-weight: bold;
+}
+
+table {
+	border: 1px solid gray;
+}
+
+table {
+	border-collapse: collapse;
+	width: 900px;
+	margin: 10px auto;
+}
+
+th {
+	background-color: #DEDEDE;
+	font-weight: bold;
+}
+
+td {
+	text-align: center;
+}
+
+#thanhtien {
+	border: 1px solid gray;
+}
+
+#tensanpham {
+	text-decoration: underline;
+	color: red;
+}
+
+.error {
+	color: red;
+}
+
+p {
+	color: red;
+}
