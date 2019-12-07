@@ -36,4 +36,12 @@
     <servlet-name>PublicPhimController</servlet-name>
     <url-pattern>/phim</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicFriendsController</servlet-name>
+    <servlet-class>controller.PublicFriendsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicFriendsController</servlet-name>
+    <url-pattern>/friends</url-pattern>
+  </servlet-mapping>
 </web-app>

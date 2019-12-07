@@ -54,7 +54,7 @@ public class PublicMuaHoaController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.print("<p>Đã mua hoa thành công!" + tenHoa + "</p>");
+		out.print("<p>Đã mua thành công!" + tenHoa + "</p>");
 	}
 
 }
