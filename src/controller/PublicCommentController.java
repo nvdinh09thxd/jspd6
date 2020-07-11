@@ -18,7 +18,7 @@ public class PublicCommentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/comment/comment.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baihoclop/comment/comment.jsp");
 		rd.forward(request, response);
 	}
 

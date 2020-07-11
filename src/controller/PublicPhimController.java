@@ -18,7 +18,7 @@ public class PublicPhimController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/BT3/youtube.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baitap/BT3/youtube.jsp");
 		rd.forward(request, response);
 	}
 

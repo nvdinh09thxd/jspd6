@@ -23,7 +23,7 @@ public class PublicMuaHoaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/BT1/shop.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baitap/BT1/shop.jsp");
 		rd.forward(request, response);
 	}
 
@@ -54,7 +54,7 @@ public class PublicMuaHoaController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.print("<p>Đã mua thành công!" + tenHoa + "</p>");
+		out.print("<p style='color: green'>Đã mua thành công: " + tenHoa + "</p>");
 	}
 
 }

@@ -7,10 +7,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Shop</title>
-		<link href="<%=request.getContextPath() %>/BT1/css/reset.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath() %>/BT1/css/style.css" rel="stylesheet" type="text/css">
-		<script src="<%=request.getContextPath() %>/BT1/js/jquery-3.3.1.min.js"></script>
-		<script src="<%=request.getContextPath() %>/BT1/js/jquery.validate.min.js"></script>
+		<link href="<%=request.getContextPath() %>/baitap/BT1/css/reset.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath() %>/baitap/BT1/css/style.css" rel="stylesheet" type="text/css">
+		<script src="<%=request.getContextPath() %>/baitap/BT1/js/jquery-3.3.1.min.js"></script>
+		<script src="<%=request.getContextPath() %>/baitap/BT1/js/jquery.validate.min.js"></script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -25,7 +25,7 @@
 				<label>Giá bán</label><input type="text" name="gia" id="gia" /><br /> <br /> 
 				<input type="submit" value="Mua" />
 			</form>
-			<a href="<%=request.getContextPath() %>/BT1/xemHoa.jsp"><button>Xem giỏ hàng</button></a>
+			<a href="<%=request.getContextPath() %>/baitap/BT1/xemHoa.jsp"><button>Xem giỏ hàng</button></a>
 		</div>
 	</body>
 	<script type="text/javascript">

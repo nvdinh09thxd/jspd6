@@ -4,8 +4,8 @@
 <html>
 <head>
 	<title>TRUNG TÂM ĐÀO TẠO LẬP TRÌNH VINAENTER</title>
-	<link href="<%=request.getContextPath()%>/BT2/css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="<%=request.getContextPath()%>/BT2/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="<%=request.getContextPath()%>/baitap/BT2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="<%=request.getContextPath()%>/baitap/BT2/css/style.css" rel='stylesheet' type='text/css' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="vinaneter, php, java, android, ios, laravel, codeigniter" />
@@ -17,8 +17,8 @@
 		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<!--end slider -->
 		<!--script-->
-<script type="text/javascript" src="<%=request.getContextPath()%>/BT2/js/move-top.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/BT2/js/easing.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/baitap/BT2/js/move-top.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/baitap/BT2/js/easing.js"></script>
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -37,13 +37,13 @@
 	 <div class="header">  
 		  <div class="container">
 			  <div class="logo">
-					<a href="/"> <img src="<%=request.getContextPath()%>/BT2/images/logo.png" title="soup" /></a>
+					<a href="/"> <img src="<%=request.getContextPath()%>/baitap/BT2/images/logo.png" title="soup" /></a>
 			 </div>
 			 <!---start-top-nav---->
 			 <div class="top-menu">
 				  <span class="menu"> </span> 
 				   <ul>
-						<li class="active"><a href="<%=request.getContextPath()%>/BT2/index.jsp">Trang chủ</a></li>						
+						<li class="active"><a href="<%=request.getContextPath()%>/baitap/BT2/index.jsp">Trang chủ</a></li>						
 						<li><a href="admin">Quản lý</a></li>	
 						<div class="clearfix"> </div>
 				 </ul>
@@ -64,9 +64,9 @@
 		 </div>
 		 <div class="banner-links">
 			 <ul>
-				 <li class="active"><a href="<%=request.getContextPath()%>/BT2/index.jsp">Những người bạn</a></li>
-				 <li><a href="<%=request.getContextPath()%>/BT2/video.jsp">Video hành trình</a></li>
-				 <li><a href="<%=request.getContextPath()%>/BT2/lien-he.jsp">Liên hệ</a></li>
+				 <li class="active"><a href="<%=request.getContextPath()%>/baitap/BT2/index.jsp">Những người bạn</a></li>
+				 <li><a href="<%=request.getContextPath()%>/baitap/BT2/video.jsp">Video hành trình</a></li>
+				 <li><a href="<%=request.getContextPath()%>/baitap/BT2/lien-he.jsp">Liên hệ</a></li>
 				 <div class="clearfix"></div>
 			 </ul>
 		 </div>

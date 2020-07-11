@@ -17,7 +17,7 @@ public class PublicFriendsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/BT2/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baitap/BT2/index.jsp");
 		rd.forward(request, response);
 	}
 

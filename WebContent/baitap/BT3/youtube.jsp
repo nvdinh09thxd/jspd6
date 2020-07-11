@@ -7,18 +7,18 @@
 	<title>Phim youtube</title>
 	<meta name="description" content="Thiet ke website, dao tap lap trinh">
 	<meta name="keywords" content="hiet ke website, dao tap lap trinh">
-	<link href="<%=request.getContextPath() %>/BT3/style.css" rel="stylesheet" type="text/css">
-	<script src="<%=request.getContextPath() %>/BT3/js/jquery-2.1.1.min.js"></script>
+	<link href="<%=request.getContextPath() %>/baitap/BT3/style.css" rel="stylesheet" type="text/css">
+	<script src="<%=request.getContextPath() %>/baitap/BT3/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 		<!-- begin header -->
 		<div id="header">
 			<div class="header-left fl">
-				<a href="index.html" title=""><img src="<%=request.getContextPath() %>/BT3/images/logo_edu.png" alt="" /></a>
+				<a href="index.html" title=""><img src="<%=request.getContextPath() %>/baitap/BT3/images/logo_edu.png" alt="" /></a>
 			</div>
 			<div class="header-right fr">
-				<a href="index.html" title=""><img src="<%=request.getContextPath() %>/BT3/images/banner.jpg" alt="" /></a>
+				<a href="index.html" title=""><img src="<%=request.getContextPath() %>/baitap/BT3/images/banner.jpg" alt="" /></a>
 			</div>
 			<div class="clr"></div>
 		</div>

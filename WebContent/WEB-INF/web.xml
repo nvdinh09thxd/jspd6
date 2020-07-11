@@ -21,6 +21,14 @@
     <url-pattern>/active</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>XuLyMuaHoaController</servlet-name>
+    <servlet-class>controller.XuLyMuaHoaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XuLyMuaHoaController</servlet-name>
+    <url-pattern>/xuly-muahoa</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>PublicMuaHoaController</servlet-name>
     <servlet-class>controller.PublicMuaHoaController</servlet-class>
   </servlet>

@@ -18,7 +18,7 @@ public class PublicActiveController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/activetin/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baihoclop/activetin/index.jsp");
 		rd.forward(request, response);
 	}
 
