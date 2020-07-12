@@ -29,10 +29,35 @@ public class PublicMuaHoaController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.valueOf(request.getParameter("aid"));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		String idStr = request.getParameter("aid");
 		String tenHoa = request.getParameter("aten");
-		int soLuong = Integer.valueOf(request.getParameter("asoluong"));
-		float giaBan = Float.valueOf(request.getParameter("agia"));
+		String soLuongStr = request.getParameter("asoluong");
+		String giaBanStr = request.getParameter("agia");
+		
+		if (idStr == "" || tenHoa == "" || soLuongStr == "" || giaBanStr == "") {
+			out.print("<p style='color: red'>Vui lòng nhập đầy đủ thông tin vào!</p>");
+			return;
+		}
+		int id = 0, soLuong = 0;
+		float giaBan = 0;
+		try {
+			id = Integer.parseInt(idStr);
+			if (id < 0)
+				throw new Exception();
+			soLuong = Integer.parseInt(soLuongStr);
+			if (soLuong < 0)
+				throw new Exception();
+			giaBan = Float.parseFloat(giaBanStr);
+			if (giaBan < 0)
+				throw new Exception();
+		} catch (Exception e) {
+			out.print("<p style='color: red'>Yêu cầu nhập số nguyên lớn hơn hoặc bằng 0!</p>");
+			return;
+		}
 
 		boolean check = false;
 		for (Hoa itemHoa : listHoa) {
@@ -50,10 +75,6 @@ public class PublicMuaHoaController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("listHoa", listHoa);
-
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 		out.print("<p style='color: green'>Đã mua thành công: " + tenHoa + "</p>");
 	}
 

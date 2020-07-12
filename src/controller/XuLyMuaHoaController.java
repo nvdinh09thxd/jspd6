@@ -18,7 +18,7 @@ public class XuLyMuaHoaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/muahoa/muahoa.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("baihoclop/muahoa/muahoa.jsp");
 		rd.forward(request, response);
 
 	}
