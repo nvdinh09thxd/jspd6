@@ -24,7 +24,7 @@ public class PublicPhimController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.valueOf(request.getParameter("aid"));
+		int id = Integer.parseInt(request.getParameter("aid"));
 		PrintWriter out = response.getWriter();
 		switch (id) {
 		case 1:
