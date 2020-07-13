@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,40 +21,76 @@ public class PublicMuaHoaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("baitap/BT1/shop.jsp");
-		rd.forward(request, response);
+		request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 		
 		String idStr = request.getParameter("aid");
 		String tenHoa = request.getParameter("aten");
 		String soLuongStr = request.getParameter("asoluong");
 		String giaBanStr = request.getParameter("agia");
 		
-		if (idStr == "" || tenHoa == "" || soLuongStr == "" || giaBanStr == "") {
-			out.print("<p style='color: red'>Vui lòng nhập đầy đủ thông tin vào!</p>");
-			return;
-		}
+		request.setAttribute("idStr", idStr);
+		request.setAttribute("tenHoa", tenHoa);
+		request.setAttribute("soLuongStr", soLuongStr);
+		request.setAttribute("giaBanStr", giaBanStr);
+		
 		int id = 0, soLuong = 0;
 		float giaBan = 0;
-		try {
-			id = Integer.parseInt(idStr);
-			if (id < 0)
-				throw new Exception();
-			soLuong = Integer.parseInt(soLuongStr);
-			if (soLuong < 0)
-				throw new Exception();
-			giaBan = Float.parseFloat(giaBanStr);
-			if (giaBan < 0)
-				throw new Exception();
-		} catch (Exception e) {
-			out.print("<p style='color: red'>Yêu cầu nhập số nguyên lớn hơn hoặc bằng 0!</p>");
+		if (idStr == "") {
+			request.setAttribute("err", "Vui lòng nhập ID!");
+			request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
 			return;
+		} else {
+			try {
+				id = Integer.parseInt(idStr);
+				if (id <= 0)
+					throw new Exception();
+			} catch (Exception e) {
+				request.setAttribute("err", "Yêu cầu nhập ID phải là số lớn hơn 0!");
+				request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+				return;
+			}
+		}
+
+		if (tenHoa == "") {
+			request.setAttribute("err", "Vui lòng nhập tên hoa!");
+			request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+			return;
+		}
+		
+		if (soLuongStr == "") {
+			request.setAttribute("err", "Vui lòng nhập số lượng!");
+			request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+			return;
+		} else {
+			try {
+				soLuong = Integer.parseInt(soLuongStr);
+				if (soLuong <= 0)
+					throw new Exception();
+			} catch (Exception e) {
+				request.setAttribute("err", "Yêu cầu nhập số lượng phải là số lớn hơn 0!");
+				request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+				return;
+			}
+		}
+
+		if (giaBanStr == "") {
+			request.setAttribute("err", "Vui lòng nhập giá bán!");
+			request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+			return;
+		} else {
+			try {
+				giaBan = Float.parseFloat(giaBanStr);
+			} catch (Exception e) {
+				request.setAttribute("err", "Yêu cầu nhập giá bán phải là số!");
+				request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
+				return;
+			}
 		}
 
 		boolean check = false;
@@ -75,7 +109,7 @@ public class PublicMuaHoaController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("listHoa", listHoa);
-		out.print("<p style='color: green'>Đã mua thành công: " + tenHoa + "</p>");
+		response.sendRedirect(request.getContextPath() + "/baitap/BT1/shop.jsp");
 	}
 
 }

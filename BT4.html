@@ -1,0 +1,14 @@
+1. Liệt kê danh sách bạn bè gồm các thông tin fid, fname, uid với fid nằm trong khoảng 2 đến 4
+SELECT fid, fname, uid FROM friends WHERE fid BETWEEN 2 AND 4;
+
+2. Liệt kê danh sách bạn bè gồm các thông tin fid, fname, fl_id, fl_name, username có fid>=3
+SELECT a.fid, a.fname, a.fl_id, b.flname, c.username 
+FROM friends a JOIN friend_list b ON a.fl_id=b.fl_id 
+JOIN users c ON a.fid=c.id
+WHERE fid>=3;
+
+3. Tại table friends, xóa những fname chứa từ "thị"
+DELETE FROM friends WHERE fname LIKE "%Thị%"
+
+4. Tại table users, cập nhật password="v123456" thành "vne654"
+UPDATE users SET password = "vne654" WHERE password = "v123456"

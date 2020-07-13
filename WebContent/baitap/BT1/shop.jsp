@@ -15,21 +15,58 @@
 	<body>
 		<div class="wrapper">
 			<h2>Mua hoa</h2>
-			<div id="result"></div>
-			<form action="javascript:void(0)" id="form">
-				<label>ID</label>
-				<input type="text" name="id" id="id" value="" /><br /> <br />
-				<label>Tên hoa</label>
-				<input type="text" name="ten" id="ten" value="" /><br /><br /> 
-				<label>Số lượng</label><input type="text" name="soluong" id="soluong" value="" /><br /> <br /> 
-				<label>Giá bán</label><input type="text" name="gia" id="gia" value="" /><br /> <br /> 
+			<p>${err}</p>
+			<form action="javascript:void(0)">
+				<label>ID</label><input type="text" name="id" id="id" value="${idStr}" /><br /> <br />
+				<label>Tên hoa</label><input type="text" name="ten" id="ten" value="${tenHoa}" /><br /><br /> 
+				<label>Số lượng</label><input type="text" name="soluong" id="soluong" value="${soLuongStr}" /><br /> <br /> 
+				<label>Giá bán</label><input type="text" name="gia" id="gia" value="${giaBanStr}" /><br /> <br /> 
 				<input type="submit" value="Mua" />
 			</form>
-			<a href="<%=request.getContextPath() %>/baitap/BT1/xemHoa.jsp"><button>Xem giỏ hàng</button></a>
 		</div>
+		
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Hoa> listHoa = (ArrayList<Hoa>) session.getAttribute("listHoa");
+			if (listHoa != null) {
+		%>
+		<table>
+			<tr>
+				<th>Tên sản phẩm</th>
+				<th>Giá</th>
+				<th>Số lượng</th>
+				<th>Tổng tiền</th>
+			</tr>
+			<%
+				float thanhTien = 0;
+					for (Hoa itemHoa : listHoa) {
+						thanhTien += itemHoa.getGiaBan() * itemHoa.getSoLuong();
+			%>
+			<tr>
+				<td id="tensanpham"><%=itemHoa.getTenHoa()%></td>
+				<td><%=itemHoa.getGiaBan()%></td>
+				<td><%=itemHoa.getSoLuong()%></td>
+				<td><%=itemHoa.getGiaBan() * itemHoa.getSoLuong()%></td>
+			</tr>
+			<%
+				}
+			%>
+			<tr id="thanhtien">
+				<td colspan="3" style="text-align: right">Thành tiền</td>
+				<td><%=thanhTien%></td>
+			</tr>
+	
+		</table>
+		<%
+			} else {
+		%>
+		<p>Giỏ hàng rỗng!</p>
+		<%
+			}
+		%>
 	</body>
 	<script type="text/javascript">
-			$('#form').submit(function(){
+			$('form').submit(function(){
 				var id = $("#id").val();
 				var ten = $("#ten").val();
 				var soluong = $("#soluong").val();
@@ -44,14 +81,7 @@
 						agia : gia
 					},
 					success : function(data) {
-						$('#result').html(data);
-						// Nếu mua thành công thì set các ô input là rỗng
-						if(data.includes("thành công")){
-							$("#id").val("")
-							$("#ten").val("")
-							$("#soluong").val("")
-							$("#gia").val("")
-						}
+						$('body').html(data);
 					},
 					error : function() {
 						alert('Có lỗi xảy ra');
