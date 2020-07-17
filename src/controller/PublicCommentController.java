@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Comment;
+
 public class PublicCommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ArrayList<Comment> listCmt = new ArrayList<>();
 
 	public PublicCommentController() {
 		super();
@@ -29,10 +32,10 @@ public class PublicCommentController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String fullName = request.getParameter("afullName");
 		String comment = request.getParameter("acmt");
-		PrintWriter out = response.getWriter();
-		out.print("<p class='name-cmt'>" + fullName + "</p>");
-		out.print("<p class='content-cmt'>" + comment + "</p>");
-		out.print("<p class=time-cmt>10PM 29/09/2015</p>");
+		if (!"".equals(fullName) && !"".equals(comment)) {
+			listCmt.add(new Comment(0, fullName, comment));
+			request.getSession().setAttribute("listCmt", listCmt);
+		}
 	}
 
 }

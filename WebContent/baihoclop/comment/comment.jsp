@@ -1,3 +1,5 @@
+<%@page import="bean.Comment"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,11 +37,20 @@
 				</form>
 			</div>
 			<div class="ajax-data">
-	
 				<div class="item-cmt" id="content">
-					<p class="name-cmt">VinaEnter</p>
-					<p class="content-cmt">Có anh ở đây rồi</p>
-					<p class="time-cmt">10PM 29/09/2015</p>
+				<%
+					ArrayList<Comment> listCmt = (ArrayList<Comment>) session.getAttribute("listCmt");
+					if(listCmt!=null && listCmt.size() > 0) {
+						for(Comment cmt : listCmt){
+				%>
+					<p class="name-cmt"><%=cmt.getName() %></p>
+					<p class="content-cmt"><%=cmt.getCmt() %></p>
+					<p class="time-cmt">10PM 29/09/2015</p><br />
+				<%
+				}} else {
+				%>
+				<p>Chưa có bình luận nào!</p>
+				<%} %>
 				</div>
 	
 			</div>
@@ -55,7 +66,9 @@
 							acmt : comment
 						},
 						success : function(data) {
-							$("#content").html(data);
+							$("#fullname").val("");
+							$("#cmt").val("");
+							$("#content").load(" #content");
 						},
 						error : function() {
 							alert("Có lỗi xảy ra");

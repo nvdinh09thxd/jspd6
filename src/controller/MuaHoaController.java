@@ -19,7 +19,7 @@ public class MuaHoaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("muahoa/muahoa.jsp").forward(request, response);
+		request.getRequestDispatcher("baihoclop/muahoa/muahoa.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
