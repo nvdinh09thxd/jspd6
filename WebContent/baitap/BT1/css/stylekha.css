@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+.wrapper, #ketqua{
+	margin: 0px auto;
+	width: 600px;
+	height: auto;
+	background-color: #F5ECCE;
+}
+
+span {
+	font-weight: bold;
+	color: black;
+	background-color: #DBA901;
+}
+
+h4 {
+	text-align: left;
+	padding-top: 10px;
+	background-color: #0489B1;
+	color: white;
+	padding: 10px;
+}
+
+form {
+	margin-left: 20px;
+}
+
+table {
+	border: 1px solid gray;
+	width: 600px;
+}
+
+tr:hover {
+	background-color: #ddd;
+	cursor: pointer;
+}
+
+td {
+	text-align: center;
+}
+
+.title-table {
+	background-color: #848484;
+}
