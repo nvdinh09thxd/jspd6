@@ -13,7 +13,7 @@
 	<body>
 		<div class="wrapper">
 			<h4>Form mua hoa</h4>
-			<form action="javascript:void(0)" method="post" id="formMuaHoa">
+			<form action="javascript:void(0)" id="formMuaHoa">
 				<label>ID hoa: </label>
 				<input type="text" name="idhoa" id="idhoa" /><br><br>
 				<label>Tên hoa: </label>
@@ -22,6 +22,8 @@
 				<input type="text" name="soluong" id="soluong" /><br> <br> 
 				<label>Giá:</label>
 				<input type="text" name="giaban" id="giaban" /><br> <br> 
+				<label>Hình ảnh:</label>
+				<input type="file" name="hinhanh" id="hinhanh" /><br> <br> 
 				<input type="submit" value="Mua hoa" onclick="muahoa()"><br> <br>
 			</form>
 			<h3 style="color: red" id="msg"></h3>
@@ -38,6 +40,7 @@
 					<th>Tên sản phẩm</th>
 					<th>Giá</th>
 					<th>Số lượng</th>
+					<th>Hình ảnh</th>
 					<th>Tổng tiền</th>
 				</tr>
 				<%
@@ -50,6 +53,7 @@
 					<td><%=hoa.getTenHoa()%></td>
 					<td><%=hoa.getGiaBan()%></td>
 					<td><%=hoa.getSoLuong()%></td>
+					<td><img style="width: 150px; height: 100px" alt="<%=hoa.getHinhAnh()%>" src="<%=request.getContextPath()%>/files/<%=hoa.getHinhAnh()%>"></td>
 					<td><%=String.format("%.0f", thanhTien)%></td>
 				</tr>
 				<%
@@ -57,8 +61,8 @@
 				%>
 	
 				<tr>
-					<td colspan="3">Tổng tiền:</td>
-					<td><%=String.format("%.0f", sum)%></td>
+					<td colspan="4" style="font-weight: bold">Thành tiền:</td>
+					<td style="font-weight: bold"><%=String.format("%.0f", sum)%></td>
 				</tr>
 	
 	
@@ -71,23 +75,20 @@
 				}
 			%>
 		</div>
+		
 		<script type="text/javascript">
 			function muahoa() {
-				var idhoa = $("#idhoa").val(); 
-				var tenhoa = $("#tenhoa").val();
-				var soluong = $("#soluong").val();
-				var giaban = $("#giaban").val();			
+				var formData = document.getElementById("formMuaHoa");
+				var fd = new FormData(formData);			
 				
 				$.ajax({
 					url: '<%=request.getContextPath()%>/muahoakha',
 					type : 'POST',
 					cache : false,
-					data : {
-						aid : idhoa,
-						aten : tenhoa,
-						asoluong : soluong,
-						agia : giaban
-					},
+					data : fd,
+					dataType : 'text',
+					processData : false,
+					contentType : false,
 					success : function(data) {
 						//alert(data);
 						$("#msg").html(data);
@@ -97,6 +98,7 @@
 							$("#tenhoa").val("");
 							$("#soluong").val("");
 							$("#giaban").val("");
+							$("#hinhanh").val("");
 						}
 						$("#ketqua").load(" #ketqua");
 					},

@@ -1,19 +1,23 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import bean.Hoa;
 
 @WebServlet("/muahoakha")
+@MultipartConfig
 public class MuaHoaKhaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Hoa> listHoa = new ArrayList<>();
@@ -29,14 +33,16 @@ public class MuaHoaKhaController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		String idStr = request.getParameter("aid");
-		String tenHoa = request.getParameter("aten");
-		String soLuongStr = request.getParameter("asoluong");
-		String giaBanStr = request.getParameter("agia");
+		String idStr = request.getParameter("idhoa");
+		String tenHoa = request.getParameter("tenhoa");
+		String soLuongStr = request.getParameter("soluong");
+		String giaBanStr = request.getParameter("giaban");
+
 		int id = 0, soLuong = 0;
 		float giaBan = 0;
 		if ("".equals(idStr)) {
@@ -83,7 +89,33 @@ public class MuaHoaKhaController extends HttpServlet {
 				return;
 			}
 		}
-		
+
+		Part filePart = request.getPart("hinhanh");
+		String fileName = filePart.getSubmittedFileName();
+		if ("".equals(fileName)) {
+			out.print("Vui lòng chọn hình ảnh!");
+			return;
+		}
+		String fileType = filePart.getContentType();
+		if (!fileType.startsWith("image")) {
+			out.print("File bạn chọn không phải là file ảnh!");
+			return;
+		}
+
+		// Xử lý upload ảnh
+		String appPath = request.getServletContext().getRealPath("");
+		String dirPath = appPath + "files";
+		File saveDir = new File(dirPath);
+		if (!saveDir.exists()) {
+			saveDir.mkdir();
+		}
+		String portal = fileName.split("\\.")[0];
+		String extra = fileName.split("\\.")[1];
+		long time = System.currentTimeMillis();
+		fileName = portal + "_" + time + "." + extra;
+		String filePath = dirPath + File.separator + fileName;
+		filePart.write(filePath);
+
 		boolean check = false;
 		for (Hoa itemHoa : listHoa) {
 			if (itemHoa.getId() == id) {
@@ -94,7 +126,7 @@ public class MuaHoaKhaController extends HttpServlet {
 		}
 
 		if (!check) {
-			Hoa hoa = new Hoa(id, tenHoa, soLuong, giaBan);
+			Hoa hoa = new Hoa(id, tenHoa, soLuong, giaBan, fileName);
 			listHoa.add(hoa);
 		}
 
