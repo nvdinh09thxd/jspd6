@@ -7,8 +7,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mua hoa</title>
-		<link href="<%=request.getContextPath()%>/baitap/BT1/css/stylekha.css"	type="text/css" rel="stylesheet" />
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<link href="<%=request.getContextPath()%>/baitap/BT1/css/style.css"	type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="<%=request.getContextPath()%>/baitap/BT1/js/jquery-3.3.1.min.js"></script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -82,7 +82,7 @@
 				var fd = new FormData(formData);			
 				
 				$.ajax({
-					url: '<%=request.getContextPath()%>/muahoakha',
+					url: '<%=request.getContextPath()%>/muahoa',
 					type : 'POST',
 					cache : false,
 					data : fd,

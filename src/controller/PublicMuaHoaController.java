@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,19 +15,18 @@ import javax.servlet.http.Part;
 
 import bean.Hoa;
 
-@WebServlet("/muahoakha")
 @MultipartConfig
-public class MuaHoaKhaController extends HttpServlet {
+public class PublicMuaHoaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Hoa> listHoa = new ArrayList<>();
 
-	public MuaHoaKhaController() {
+	public PublicMuaHoaController() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("baitap/BT1/shopkha.jsp").forward(request, response);
+		request.getRequestDispatcher("baitap/BT1/shop.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -114,7 +112,6 @@ public class MuaHoaKhaController extends HttpServlet {
 		long time = System.currentTimeMillis();
 		fileName = portal + "_" + time + "." + extra;
 		String filePath = dirPath + File.separator + fileName;
-		filePart.write(filePath);
 
 		boolean check = false;
 		for (Hoa itemHoa : listHoa) {
@@ -126,6 +123,7 @@ public class MuaHoaKhaController extends HttpServlet {
 		}
 
 		if (!check) {
+			filePart.write(filePath);
 			Hoa hoa = new Hoa(id, tenHoa, soLuong, giaBan, fileName);
 			listHoa.add(hoa);
 		}
