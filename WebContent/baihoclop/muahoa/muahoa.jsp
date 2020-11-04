@@ -35,7 +35,7 @@
 		</div>		
 	</body>
 	<script type="text/javascript">
-		$( ".ketqua" ).hide();//display: none;
+		$(".ketqua").hide();//display: none;
 		function xulyMuaHoa(){
 			var tenHoa = "Hoa hồng";
 			var donGia = 200000;
@@ -50,7 +50,7 @@
 					soLuong: soLuong
 				},
 				success: function(data){
-					$( ".ketqua" ).show();
+					$(".ketqua").show();
 					$(".ketqua").html(data);
 				},
 				error: function (){
