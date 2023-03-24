@@ -1,9 +1,2 @@
 eclipse.preferences.version=1
-encoding//WebContent/baitap/BT2/chi-tiet.jsp=UTF-8
-encoding//WebContent/baitap/BT2/danh-muc.jsp=UTF-8
-encoding//WebContent/baitap/BT2/index.jsp=UTF-8
-encoding//WebContent/baitap/BT2/lien-he.jsp=UTF-8
-encoding//WebContent/baitap/BT2/video.jsp=UTF-8
-encoding//src/controller/MuaHoaController.java=UTF-8
-encoding//src/controller/PublicActiveController.java=UTF-8
-encoding//src/controller/PublicMuaHoaController.java=UTF-8
+encoding/<project>=UTF-8
